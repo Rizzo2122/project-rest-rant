@@ -22,7 +22,6 @@ router.post('/', (req, res) => {
   if (req.body.state === '') { req.body.state = undefined }
 
   req.body=_.mapValues(req.body, v => v == ''?undefined: v);
-  console.log(req.body)
   db.Place.create(req.body)
     .then(() => {
       res.redirect('/places')
@@ -33,7 +32,7 @@ router.post('/', (req, res) => {
         for (var field in err.errors) {
           message += `${field} was ${err.errors[field].value}. ${err.errors[field].message}\n`
         }
-        res.render('places/new', { message })
+        res.render('places/new', {message})
       }
       else {
         res.render('error404')
