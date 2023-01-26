@@ -85,14 +85,28 @@ function show(data) {
                     </div>
                     <input type="submit" className="btn btn-primary" value="Add Comment" />
                 </form>
-                <a href={`/places/${data.id}/edit`} className="btn btn-warning">
+                <a href={`/places/${data.place.id}/edit`} className="btn btn-warning">
                     Edit
                 </a>     
-                <form method="POST" action={`/places/${data.id}?_method=DELETE`}>
+                <form method="POST" action={`/places/${data.place.id}?_method=DELETE`}>
                     <button type="submit" className="btn btn-danger">
                         Delete
                     </button>
-                </form>      
+                </form>  
+                <h1>Edit Place</h1>
+                <form method="POST" action={`/places/${data.place.id}?_method=PUT`}>
+                    <div className="row">
+                        <div className="form-group col-sm-4">
+                            <label htmlFor="founded">Founded</label>
+                            <input className="form-control"
+                                id="founded"
+                                name="founded"
+                                value={data.place.founded}
+                            />
+                        </div>
+                    </div>
+                    <input className="btn btn-primary" type="submit" value="Update Place" />
+                </form>    
             </main>
         </Def>
     )
